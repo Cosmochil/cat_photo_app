@@ -1,0 +1,30 @@
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#display {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display__figure {
+
+    margin: 0 auto;
+}
+
+.display__title {
+    text-align: center;
+}
+
+.display__image {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 900px;
+    height: auto;
+}
