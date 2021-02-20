@@ -2,7 +2,7 @@
 
 */
 let app = document.querySelector(`#app`)
-let app_breed = document.querySelector(`#app__breed`)
+let cat_breed = document.querySelector(`#cat_breed`)
 let display = document.querySelector(`#display`)
 
 
@@ -28,10 +28,10 @@ async function get_cat_data() {
 }
 
 function create_cat_list(data){
-    app__breed.innerHTML = `
-        <select onchange="load_by_breed(this.value)">
+    cat_breed.innerHTML = `
+        <select onchange="load_by_breed(this.value)" class="select_cat">
             <option>Choose a cat breed</option>
-            <option>${data.map(breed => `<option>${breed.name}</option>`).join('')}</option>
+            ${data.map(breed => `<option>${breed.name}</option>`).join('')}
         </select>
     `;
 } 
@@ -72,85 +72,78 @@ async function load_by_breed(cat_name){
             let cat_shedding = cat_path.shedding_level
             let cat_social = cat_path.social_needs
             let cat_vocalisation = cat_path.vocalisation
-            let cat_experimental = cat_path.experimental
-            let cat_hairless = cat_path.hairless
-            let cat_natural = cat_path.natural
-            let cat_rare = cat_path.rare
-            let cat_tail = cat_path.suppresed_tail
-            let cat_leg = cat_path.short_leg
-            let cat_alergy = cat_path.hypoallergenic
             let cat_nature = cat_path.temperament
 
             // Below is the display template to show the information on the webpage 
     
             display.innerHTML = `
-                <header class="display__title">
-                    <h1>${cat_name}</h1>
-                </header>
-                <main>
-                    <figure class="display__figure">
-                        <img class="display__image" src="${cat_image}">
-                        <figcaption>${cat_description}</figcaption>
-                    </figure>
-                    <section>
-                        <h2>Cat Nature</h2>
-                        <ul>
-                            ${cat_nature.split(", ")}
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Cat Characteristics</h2>
+            <main>
+            <header class="display__title">
+                <h1>${cat_name}</h1>
+            </header>
+                <figure class="display__figure">
+                    <img class="cat_image" src="${cat_image}">
+                    <figcaption class ="cat_description">${cat_description}</figcaption>
+                </figure>
+                <section class="cat_nature">
+                    <h2>Cat Nature</h2>
+                    <ul>
+                        ${cat_nature.split(",")}
+                    </ul>
+                </section>
+                <section class="cat_stats">
+                    <h2>Cat Characteristics</h2>
+                    <p>
+                        <label for="adaptability">Adaptability</label>
+                        <meter id="adaptability" min="0" max="5" value="${cat_adaptability}"></meter>
+                    </p>
+                    <p>
+                        <label for="affection">Affection</label>
+                        <meter id="affection" min="0" max="5" value="${cat_affection}"></meter>  
+                    </p>
+                    <p>
+                        <label for="child_friendly">Child Friendly</label>
+                        <meter id="child_friendly" min="0" max="5" value="${cat_child}"></meter>  
+                    </p>
+                    <p>
+                        <label for="dog_friendly">Dog Friendly</label>
+                        <meter id="dog_friendly" min="0" max="5" value="${cat_dog}"></meter>  
+                    </p>
+                    <p>
+                        <label for="energy">Energy Level</label>
+                        <meter id="energy" min="0" max="5" value="${cat_energy}"></meter>  
+                    </p>
+                    <p>
+                        <label for="grooming">Grooming</label>
+                        <meter id="grooming" min="0" max="5" value="${cat_grooming}"></meter>  
+                    </p>
                         <p>
-                            <label for="adaptability">Adaptability</label>
-                            <meter id="adaptability" min="0" max="5" value="${cat_adaptability}"></meter>
-                        </p>
-                        <p>
-                            <label for="affection">Affection</label>
-                            <meter id="affection" min="0" max="5" value="${cat_affection}"></meter>  
-                        </p>
-                        <p>
-                            <label for="child_friendly">Child Friendly</label>
-                            <meter id="child_friendly" min="0" max="5" value="${cat_child}"></meter>  
-                        </p>
-                        <p>
-                            <label for="dog_friendly">Dog Friendly</label>
-                            <meter id="dog_friendly" min="0" max="5" value="${cat_dog}"></meter>  
-                        </p>
-                        <p>
-                            <label for="energy">Energy Level</label>
-                            <meter id="energy" min="0" max="5" value="${cat_energy}"></meter>  
-                        </p>
-                        <p>
-                            <label for="grooming">Grooming</label>
-                            <meter id="grooming" min="0" max="5" value="${cat_grooming}"></meter>  
-                        </p>
-                         <p>
-                            <label for="health">Health Issues</label>
-                            <meter id="health" min="0" max="5" value="${cat_health}"></meter>  
-                        </p>
-                        <p>
-                            <label for="intelligence">Intelligence</label>
-                            <meter id="intelligence" min="0" max="5" value="${cat_intelligence}"></meter>  
-                        </p>
-                        <p>
-                            <label for="shedding">Shedding Level</label>
-                            <meter id="shedding" min="0" max="5" value="${cat_shedding}"></meter>  
-                        </p>
-                        <p>
-                            <label for="social">Social Needs</label>
-                            <meter id="social" min="0" max="5" value="${cat_social}"></meter>  
-                        </p>
-                        <p>
-                            <label for="stranger_friendly">Stranger Friendly</label>
-                            <meter id="stranger_friendly" min="0" max="5" value="${cat_stranger}"></meter>  
-                        </p>
-                        <p>
-                            <label for="vocalisation">Vocalisation</label>
-                            <meter id="vocalisation" min="0" max="5" value="${cat_vocalisation}"></meter>  
-                        </p>
-                        
-                    </section>
-                </main>
+                        <label for="health">Health Issues</label>
+                        <meter id="health" min="0" max="5" value="${cat_health}"></meter>  
+                    </p>
+                    <p>
+                        <label for="intelligence">Intelligence</label>
+                        <meter id="intelligence" min="0" max="5" value="${cat_intelligence}"></meter>  
+                    </p>
+                    <p>
+                        <label for="shedding">Shedding Level</label>
+                        <meter id="shedding" min="0" max="5" value="${cat_shedding}"></meter>  
+                    </p>
+                    <p>
+                        <label for="social">Social Needs</label>
+                        <meter id="social" min="0" max="5" value="${cat_social}"></meter>  
+                    </p>
+                    <p>
+                        <label for="stranger_friendly">Stranger Friendly</label>
+                        <meter id="stranger_friendly" min="0" max="5" value="${cat_stranger}"></meter>  
+                    </p>
+                    <p>
+                        <label for="vocalisation">Vocalisation</label>
+                        <meter id="vocalisation" min="0" max="5" value="${cat_vocalisation}"></meter>  
+                    </p>
+                    
+                </section>
+            </main>
             `;
         }
     }
