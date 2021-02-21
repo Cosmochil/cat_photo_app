@@ -88,7 +88,7 @@ async function load_by_breed(cat_name){
                 <section class="cat_nature">
                     <h2>Cat Nature</h2>
                     <ul>
-                        ${cat_nature.split(",")}
+                        ${`<li>${cat_nature.split(",")}</li>`}
                     </ul>
                 </section>
                 <section class="cat_stats">

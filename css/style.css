@@ -56,6 +56,7 @@
     padding: 1em 2em;
     font-size: 1.7rem;
     font-family: 'Baloo 2 Regular';
+    text-align: justify;
 }
 
 .cat_nature {
@@ -64,12 +65,16 @@
     font-size: 1.5rem;
 }
 
+.cat_nature li {
+    list-style: none;
+}
+
 .cat_stats {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1.5em 4rem;
+    padding: .5em .4rem;
     font-size: 1.5rem;
 }
 
@@ -104,4 +109,24 @@ meter::-webkit-meter-optimum-value {
       #719fd1 100%
     );
     background-size: 100% 100%;
+}
+
+@media only screen and (max-width:600px){
+    #header {
+        padding: 5em 1em 1em;
+        font-size: 1.5rem;
+    }
+    .cat_description {
+        padding: 1em 2em;
+        font-size: 1.2rem;
+    }
+    
+    .cat_nature {
+        padding: 0.5em;
+        font-size: 1.4rem;
+    }
+    .cat_stats {
+        padding: 1.2em 2rem;
+        font-size: 1.4rem;
+    }    
 }
